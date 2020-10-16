@@ -18,12 +18,20 @@ const images = [
 
 const ul = document.querySelector("#gallery");
 
-const galleryElements = images.map((el) => {
-  const image = document.createElement("img");
-  image.src = el.url;
-  image.alt = el.alt;
-  image.classList.add("image_item");
-  return image;
+const galleryElements = images.map(({ url, alt }) => {
+  return `<li> <img class="image_item" src="${url}" alt="${alt}"/> </li>`;
 });
 
-ul.append(...galleryElements);
+ul.insertAdjacentHTML("beforeend", galleryElements.join(""));
+
+// const galleryElements = images.map((el) => {
+//   const listEl = document.createElement("li");
+//   const image = document.createElement("img");
+//   image.src = el.url;
+//   image.alt = el.alt;
+//   image.classList.add("image_item");
+//   listEl.append(image);
+//   return listEl;
+// });
+
+// ul.append(...galleryElements);

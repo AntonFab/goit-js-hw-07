@@ -15,14 +15,9 @@ input.addEventListener("change", onInputChange);
 function onInputChange(event) {
   currentValueLength = event.currentTarget.value.length;
 
-  if (
-    currentValueLength === minReqLength &&
-    input.classList.contains("invalid")
-  ) {
-    input.classList.replace("invalid", "valid");
-  } else if (currentValueLength === minReqLength) {
-    input.classList.add("valid");
-  } else if (input.classList.contains("valid")) {
-    input.classList.replace("valid", "invalid");
-  } else input.classList.add("invalid");
+  currentValueLength !== minReqLength
+    ? input.classList.add("invalid") ||
+      input.classList.replace("valid", "invalid")
+    : input.classList.add("valid") ||
+      input.classList.replace("invalid", "valid");
 }
